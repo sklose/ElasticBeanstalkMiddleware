@@ -2,10 +2,14 @@
     "dependencies": {
         "xunit.runner.aspnet": "2.0.0-aspnet-*"
     },
-    "frameworks": {
-        "dnx451": { },
-    },
     "commands": {
         "test": "xunit.runner.aspnet"
+    },
+    "frameworks": {
+        "dnx451": {
+            "dependencies": {
+                "Shouldly": "1.1.1.1"
+            }
+        }
     }
 }
