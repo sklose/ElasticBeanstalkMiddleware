@@ -2,3 +2,4 @@ artifacts
 packages
 bin
 project.lock.json
+.vs
