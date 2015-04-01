@@ -3,3 +3,4 @@ packages
 bin
 project.lock.json
 .vs
+.nuget
