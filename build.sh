@@ -23,8 +23,8 @@ if test ! -e .nuget; then
 fi
 
 if test ! -d packages/KoreBuild; then
-    mono .nuget/nuget.exe install KoreBuild -ConfigFile ./NuGet.config -ExcludeVersion -o packages -nocache -pre
-    mono .nuget/nuget.exe install Sake -ConfigFile ./NuGet.config -version 0.2 -o packages -ExcludeVersion
+    mono .nuget/nuget.exe install KoreBuild -ExcludeVersion -o packages -nocache -pre
+    mono .nuget/nuget.exe install Sake -version 0.2 -o packages -ExcludeVersion
 fi
 
 if ! type dnvm > /dev/null 2>&1; then

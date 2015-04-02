@@ -1,4 +1,7 @@
 sudo: required
 language: csharp
 script:
+  - mkdir ~/.config/
+  - mkdir ~/.config/NuGet/
+  - cp NuGet.config ~/.config/NuGet/NuGet.config
   - ./build.sh verify
