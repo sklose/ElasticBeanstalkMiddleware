@@ -7,12 +7,10 @@ namespace Amazon.ElasticBeanstalk
 {
     public class EbMiddleware
     {
-        private readonly RequestDelegate _next;
         private readonly EbOptions _options;
 
-        public EbMiddleware(RequestDelegate next, EbOptions options)
+        public EbMiddleware(EbOptions options)
         {
-            _next = next;
             _options = options;
         }
 
@@ -29,8 +27,6 @@ namespace Amazon.ElasticBeanstalk
                 context.Response.StatusCode = 500; // Internal Server Error
                 await context.Response.WriteAsync(ex.Message);
             }
-            
-            await _next(context);
         }
     }
 }
