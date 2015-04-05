@@ -1,5 +1,14 @@
 {
+  "name": "ElasticBeanstalkMiddleware",
   "version": "0.1.0",
+  "title": "ASP.NET ElasticBeanstalk Middleware",
+  "description": "ASP.NET vNext Middleware for Worker instances in AWS Elastic Beanstalk",
+  "authors": [ "Sebastian Klose" ],
+  "projectUrl": "https://github.com/sklose/ElasticBeanstalkMiddleware",
+  "tags": [
+    "asp.net", "vnext", "middleware", "aws", "eb",
+	"elasticbeanstalk", "beanstalk"
+  ],
   "dependencies": {
     "Microsoft.AspNet.Http": "1.0.0-*",
     "Microsoft.AspNet.Hosting": "1.0.0-*"
