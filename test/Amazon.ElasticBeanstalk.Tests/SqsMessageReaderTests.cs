@@ -30,6 +30,25 @@ namespace Amazon.ElasticBeanstalk.Tests
             Assert.Equal(message.FirstReceivedAt, new DateTime(2014, 2, 18, 23, 04, 50, DateTimeKind.Utc));
         }
 
+        [Fact]
+        public void ValidHttpRequestShouldParseMessageAttributes()
+        {
+            var context = CreateRequest();
+            context.Request.Method = "POST";
+            context.Request.Headers["X-aws-sqsd-msgid"] = "66FD63B0-5E83-4EE6-AAB9-2D39AD19C13E";
+            context.Request.Headers["X-aws-sqsd-queue"] = "Test-Queue";
+            context.Request.Headers["X-aws-sqsd-first-received-at"] = "2014-02-18T23:04:50Z";
+            context.Request.Headers["X-aws-sqsd-receive-count"] = "2";
+            context.Request.Headers["X-Aws-Sqsd-Attr-MyAttribute1"] = "abc";
+            context.Request.Headers["X-Aws-Sqsd-Attr-MyAttribute2"] = "xyz";
+            context.Request.Body = new MemoryStream(Encoding.ASCII.GetBytes("Hallo Welt"));
+
+            var message = SqsMessageReader.ReadFrom(context.Request);
+
+            Assert.Equal(message.Attributes.Count, 2);
+            Assert.Equal(message.Attributes["MyAttribute1"], "abc");
+            Assert.Equal(message.Attributes["MyAttribute2"], "xyz");
+        }
 
         [Theory]
         [InlineData("GET")]

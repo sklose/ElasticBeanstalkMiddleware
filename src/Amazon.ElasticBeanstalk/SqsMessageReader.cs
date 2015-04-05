@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using Microsoft.AspNet.Http;
 
 namespace Amazon.ElasticBeanstalk
@@ -76,7 +77,7 @@ namespace Amazon.ElasticBeanstalk
                 taskScheduledAt = tmp;
             }
 
-            return new SqsMessage
+            var message = new SqsMessage
             {
                 Id = messageId,
                 ContentType = request.ContentType,
@@ -88,6 +89,17 @@ namespace Amazon.ElasticBeanstalk
                 TaskScheduledAt = taskScheduledAt,
                 Payload = request.Body
             };
+
+            foreach (var header in request.Headers)
+            {
+                if (header.Key.StartsWith(AttributePrefixHeader))
+                {
+                    string attributeName = header.Key.Substring(AttributePrefixHeader.Length);
+                    message.Attributes[attributeName] = header.Value.First();
+                }
+            }
+
+            return message;
         }
 
         private static void VerifyHeaders(HttpRequest request)
