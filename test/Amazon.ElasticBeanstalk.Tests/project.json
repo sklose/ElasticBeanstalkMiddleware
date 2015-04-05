@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "Amazon.ElasticBeanstalk": "",
+    "Amazon.ElasticBeanstalk": "0.1.0",
     "Microsoft.AspNet.Http": "1.0.0-*",
     "Microsoft.AspNet.Http.Core": "1.0.0-*",
     "xunit.runner.aspnet": "2.0.0-aspnet-*"
