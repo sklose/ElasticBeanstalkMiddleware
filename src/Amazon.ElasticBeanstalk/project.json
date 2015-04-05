@@ -1,6 +1,6 @@
 {
   "name": "ElasticBeanstalkMiddleware",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "title": "ASP.NET ElasticBeanstalk Middleware",
   "description": "ASP.NET vNext Middleware for Worker instances in AWS Elastic Beanstalk",
   "authors": [ "Sebastian Klose" ],
