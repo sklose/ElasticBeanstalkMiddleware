@@ -8,7 +8,7 @@ namespace Amazon.ElasticBeanstalk
     {
         public SqsMessage()
         {
-            Attributes = new Dictionary<string, string>();
+            Attributes = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         }
 
         public Guid Id { get; set; }
